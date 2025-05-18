@@ -21,34 +21,59 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 
+/* --- Navbar estilo Framer --- */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  background: rgba(0,0,0,0.85);
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 2.5rem;
   z-index: 1000;
-  box-shadow: 0 2px 16px 0 rgba(96,37,225,0.08);
+  box-shadow: none;
+  height: 64px;
+  border-bottom: none;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 .navbar-logo img {
-  height: 40px;
+  height: 56px;
+  width: auto;
+  display: block;
+}
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+  margin-top: 0.2rem;
 }
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
+  margin: 0 auto;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
 }
 .navbar-links a {
   color: #fff;
   text-decoration: none;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
+  font-size: 1.08rem;
   transition: color 0.2s;
+  padding: 2px 0;
+  border-bottom: 2px solid transparent;
 }
-.navbar-links a:hover {
+.navbar-links a:hover, .navbar-links a:focus {
   color: #6025E1;
+  border-bottom: 2px solid #6025E1;
 }
 
 .hero-section {
@@ -413,8 +438,11 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
   .navbar-links {
-    gap: 1rem;
+    gap: 1.2rem;
   }
 }
 @media (max-width: 600px) {
@@ -444,6 +472,17 @@ footer {
     width: 40px;
     height: 40px;
     font-size: 1.3rem;
+  }
+  .navbar-logo img {
+    height: 38px;
+  }
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  .cta-btn.cta-animated {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.98rem;
+    min-width: 90px;
   }
 }
 
@@ -592,4 +631,72 @@ footer {
     font-size: 0.98rem;
     padding: 0.8rem 1rem;
   }
+}
+
+/* --- Animated CTA Button Mejorado --- */
+.cta-animated-wrapper {
+  display: inline-block;
+  padding: 3px;
+  border-radius: 40px;
+  background: conic-gradient(from 0deg, #6025E1 0deg, #6025E1 60deg, transparent 120deg, transparent 360deg);
+  background-size: 200% 200%;
+  animation: border-rotate 2.5s linear infinite;
+  transition: filter 0.2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-animated-wrapper {
+    animation: none;
+    background: #6025E1;
+  }
+}
+@keyframes border-rotate {
+  100% { background-position: 200% 200%; }
+}
+.cta-btn.cta-animated {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  color: #1a003a;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 36px;
+  padding: 0.85rem 2.2rem;
+  font-size: 1.08rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px 0 #6025E122;
+  transition: background 0.25s, color 0.25s, box-shadow 0.2s;
+  outline: none;
+  text-decoration: none;
+  z-index: 1;
+  min-width: 120px;
+  min-height: 44px;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+.cta-animated-wrapper .cta-btn.cta-animated {
+  background: #fff;
+  box-shadow: none;
+}
+.cta-animated-wrapper:focus-within {
+  filter: drop-shadow(0 0 8px #6025E1);
+}
+.cta-animated-wrapper:hover {
+  animation-duration: 1s;
+}
+.cta-animated-wrapper:hover .cta-btn.cta-animated {
+  background: linear-gradient(135deg, #fff 70%, #e0e0e0 100%);
+  color: #6025E1;
+}
+.cta-btn.cta-animated:focus {
+  outline: 2px solid #28D7A0;
+  outline-offset: 2px;
+}
+.cta-btn, .cta-btn:visited, .cta-btn:active {
+  text-decoration: none !important;
+}
+
+/* No animación para .cta-sticky */
+.cta-sticky, .cta-sticky:visited, .cta-sticky:active {
+  text-decoration: none !important;
 }
