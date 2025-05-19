@@ -28,7 +28,7 @@
   <!-- Fondo animado Vanta.js -->
   <nav class="navbar">
     <div class="navbar-logo">
-      <img src="logo.png" alt="AdvantX Logo" height="56">
+      <img src="logo.png" alt="AdvantX Logo" height="56" style="cursor:pointer;" onclick="document.getElementById('inicio').scrollIntoView({behavior: 'smooth'});">
     </div>
     <button class="hamburger-menu" aria-label="Menu">
       <span></span>
@@ -41,7 +41,9 @@
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#agenda">Agenda</a></li>
       </ul>
-      <span class="cta-animated-wrapper"><a href="#agenda" class="cta-btn cta-animated">Contáctenos</a></span>
+      <span class="cta-animated-wrapper">
+      </span>
+      <button class="btn-violeta" id="btn-contacto-nuevo">Contáctenos</button>
     </div>
   </nav>
 
@@ -55,7 +57,8 @@
     <div class="hero-content">
       <h1>Automatizá tu negocio con IA. Sin fricción. Sin límites.</h1>
       <p class="subhead">Nunca más hagas tareas repetitivas. Dedica más tiempo a lo que te apasiona, tu ventaja X.</p>
-      <span class="cta-animated-wrapper"><a href="#agenda" class="cta-btn cta-animated">Ver demo en vivo</a></span>
+      <span class="cta-animated-wrapper"></span>
+      <button class="btn-violeta" id="btn-demo-nuevo" onclick="document.getElementById('agenda').scrollIntoView({behavior: 'smooth'});">Ver demo en vivo</button>
     </div>
   </header>
 
@@ -156,24 +159,24 @@
     <h2>Servicios AdvantX</h2>
     <div class="servicios-cards">
       <div class="servicio-card">
-        <h3>Embudo IA 360°</h3>
-        <p>Leads→ventas sin intervención humana.</p>
+        <h3>Embudo automático</h3>
+        <p>CRM + agendas + slack + chatbots + reporting.</p>
       </div>
       <div class="servicio-card">
-        <h3>Chatbots closers 24/7</h3>
-        <p>Cierran DM y WhatsApp.</p>
+        <h3>Chatbots 24/7</h3>
+        <p>Responden cualquier consulta que tus clientes puedan tener. </p>
       </div>
       <div class="servicio-card">
-        <h3>Automatización back-office</h3>
-        <p>Facturación, soporte, reporting.</p>
+        <h3>AI Setters</h3>
+        <p>Automatizá las conversaciones de ventas con IA.</p>
       </div>
     </div>
   </section>
 
   <section id="roi-calculator" class="roi-calculator">
     <div class="wrapper">
-      <h2>Calcula tu ROI con IA</h2>
-      <p class="subhead">Descubre cuánto puedes ahorrar automatizando tus procesos</p>
+      <h2>Calculá tu ROI con IA</h2>
+      <p class="subhead">Descubrí cuánto podes ahorrar automatizando tus procesos</p>
       
       <div class="calculator-container">
         <div class="calculator-inputs">
@@ -269,7 +272,7 @@
 
   <section id="agenda" class="cta-agenda">
     <h2>Agenda tu demo gratuita</h2>
-    <p>Descubre en 15 min cómo podemos añadir un cero a tus lanzamientos sin añadir personas a tu equipo.</p>
+    <p>Descubrí en 15 min cómo podemos añadir un cero a tu facturación sin añadir personas a tu equipo.</p>
     <form class="lead-form">
       <input type="text" name="nombre" placeholder="Nombre" required>
       <input type="email" name="email" placeholder="Email" required>
@@ -284,7 +287,9 @@
     </div>
   </section>
 
-  <button id="scrollTopBtn" aria-label="Volver arriba">↑</button>
+<!-- <button id="scrollTopBtn" aria-label="Volver arriba">↑</button> -->
+
+  
 
   </section>
 
