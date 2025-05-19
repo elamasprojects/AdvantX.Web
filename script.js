@@ -106,3 +106,100 @@ if (kpiBar) {
   }, { threshold: 0.4 });
   kpiObserver.observe(kpiBar);
 }
+
+// Mobile menu functionality
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navbarMenu = document.querySelector('.navbar-menu');
+const navbarLinks = document.querySelectorAll('.navbar-links a');
+
+hamburgerMenu.addEventListener('click', () => {
+  hamburgerMenu.classList.toggle('active');
+  navbarMenu.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+navbarLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburgerMenu.classList.remove('active');
+    navbarMenu.classList.remove('active');
+  });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburgerMenu.contains(e.target) && !navbarMenu.contains(e.target)) {
+    hamburgerMenu.classList.remove('active');
+    navbarMenu.classList.remove('active');
+  }
+});
+
+// Calculadora ROI interactiva
+
+// ... existing code ...
+
+// ROI Calculator
+const calculatorInputs = document.querySelectorAll('.calculator-input');
+const monthlySavings = document.getElementById('monthly-savings');
+const yearlySavings = document.getElementById('yearly-savings');
+const roiValue = document.getElementById('roi');
+
+function calculateROI() {
+  const hours = parseFloat(document.getElementById('hours').value) || 0;
+  const cost = parseFloat(document.getElementById('cost').value) || 0;
+  const leads = parseFloat(document.getElementById('leads').value) || 0;
+  
+  // Asumimos que la IA reduce el tiempo en un 80%
+  const timeReduction = 0.8;
+  const monthlyHoursSaved = hours * timeReduction;
+  const monthlyCostSaved = monthlyHoursSaved * cost;
+  const yearlyCostSaved = monthlyCostSaved * 12;
+  
+  // ROI = (Ahorro anual / Inversión inicial) * 100
+  // Asumimos una inversión inicial de $1000
+  const initialInvestment = 1000;
+  const roi = ((yearlyCostSaved - initialInvestment) / initialInvestment) * 100;
+  
+  // Actualizar resultados con animación
+  animateValue(monthlySavings, monthlyCostSaved, '$');
+  animateValue(yearlySavings, yearlyCostSaved, '$');
+  animateValue(roiValue, roi, '%');
+}
+
+function animateValue(element, end, prefix = '') {
+  const start = parseFloat(element.textContent.replace(/[^0-9.-]+/g, '')) || 0;
+  const duration = 1000;
+  const startTime = performance.now();
+  
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    const current = start + (end - start) * progress;
+    element.textContent = prefix + Math.round(current).toLocaleString();
+    
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+  
+  requestAnimationFrame(update);
+}
+
+calculatorInputs.forEach(input => {
+  input.addEventListener('input', calculateROI);
+});
+
+// Calcular valores iniciales
+calculateROI();
+
+// ... existing code ...
+
+// Navbar fondo transparente y sticky con fondo negro al scrollear
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight / 2) {
+    navbar.classList.add('navbar-scrolled');
+  } else {
+    navbar.classList.remove('navbar-scrolled');
+  }
+});

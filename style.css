@@ -9,11 +9,39 @@ html {
 }
 body {
   font-family: 'Space Grotesk', Arial, sans-serif;
-  background: #000000;
+  background: #000 !important;
   color: #fff;
   min-height: 100vh;
   line-height: 1.5;
 }
+
+/*
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(120deg, #6025E1 0%, #a084ee 50%, #ffb6ea 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+*/
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', Arial, sans-serif;
@@ -25,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  background: #000;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,7 +62,14 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: none;
   height: 64px;
   border-bottom: none;
+  transition: background 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.35s;
 }
+
+.navbar.navbar-scrolled {
+  background: #000 !important;
+  box-shadow: 0 2px 16px 0 #00000033;
+}
+
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -76,6 +111,30 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 2px solid #6025E1;
 }
 
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -83,8 +142,8 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, #000 60%, #6025E1 100%);
   overflow: hidden;
+  /* El fondo animado de Vanta.js se aplica aquí por JS */
 }
 .hero-bg-video video {
   position: absolute;
@@ -116,7 +175,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
 }
 .cta-btn {
-  background: linear-gradient(90deg, #6025E1 60%, #7f53ff 100%);
   color: #fff;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
@@ -129,8 +187,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: background 0.2s, transform 0.2s;
 }
 .cta-btn:hover {
-  background: #fff;
-  color: #6025E1;
   transform: scale(1.05);
 }
 
@@ -202,7 +258,6 @@ h1, h2, h3, h4, h5, h6 {
 .servicio-card:hover {
   transform: translateY(-8px) scale(1.04);
   box-shadow: 0 8px 32px 0 #6025E188;
-  background: linear-gradient(135deg, #1a003a 60%, #6025E1 100%);
 }
 
 .testimonios {
@@ -372,27 +427,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2rem;
 }
 
-.cta-sticky {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: #6025E1;
-  color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  border-radius: 32px;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 32px 0 #6025E144;
-  z-index: 1001;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-}
-.cta-sticky:hover {
-  background: #fff;
-  color: #6025E1;
-  transform: scale(1.05);
-}
-
 #scrollTopBtn {
   position: fixed;
   bottom: 2rem;
@@ -459,12 +493,6 @@ footer {
   }
   .lead-form {
     padding: 1rem;
-  }
-  .cta-sticky {
-    right: 1rem;
-    bottom: 1rem;
-    padding: 0.7rem 1.2rem;
-    font-size: 0.95rem;
   }
   #scrollTopBtn {
     left: 1rem;
@@ -633,70 +661,272 @@ footer {
   }
 }
 
-/* --- Animated CTA Button Mejorado --- */
-.cta-animated-wrapper {
-  display: inline-block;
-  padding: 3px;
-  border-radius: 40px;
-  background: conic-gradient(from 0deg, #6025E1 0deg, #6025E1 60deg, transparent 120deg, transparent 360deg);
-  background-size: 200% 200%;
-  animation: border-rotate 2.5s linear infinite;
-  transition: filter 0.2s;
+/* Estilos básicos para la calculadora ROI */
+
+/* ROI Calculator */
+.roi-calculator {
+  padding: 6rem 2rem 2rem 2rem;
+  background: #0a001a;
+  text-align: center;
 }
-@media (prefers-reduced-motion: reduce) {
-  .cta-animated-wrapper {
-    animation: none;
-    background: #6025E1;
-  }
+
+.roi-calculator .wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
 }
-@keyframes border-rotate {
-  100% { background-position: 200% 200%; }
+
+.calculator-container {
+  background: #1a003a;
+  border-radius: 24px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  box-shadow: 0 4px 32px 0 #6025E122;
 }
-.cta-btn.cta-animated {
-  position: relative;
-  display: inline-block;
-  background: #fff;
-  color: #1a003a;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  border: none;
-  border-radius: 36px;
-  padding: 0.85rem 2.2rem;
-  font-size: 1.08rem;
-  cursor: pointer;
-  box-shadow: 0 2px 12px 0 #6025E122;
-  transition: background 0.25s, color 0.25s, box-shadow 0.2s;
+
+.calculator-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  color: #bdbaff;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.calculator-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #000;
+  border: 1px solid #6025E1;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: border-color 0.2s;
+}
+
+.calculator-input:focus {
   outline: none;
-  text-decoration: none;
-  z-index: 1;
-  min-width: 120px;
-  min-height: 44px;
-  letter-spacing: 0.01em;
-  overflow: hidden;
+  border-color: #7f53ff;
 }
-.cta-animated-wrapper .cta-btn.cta-animated {
-  background: #fff;
-  box-shadow: none;
+
+.calculator-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
-.cta-animated-wrapper:focus-within {
-  filter: drop-shadow(0 0 8px #6025E1);
+
+.result-card {
+  background: #000;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
 }
-.cta-animated-wrapper:hover {
-  animation-duration: 1s;
+
+.result-card h3 {
+  color: #bdbaff;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
 }
-.cta-animated-wrapper:hover .cta-btn.cta-animated {
-  background: linear-gradient(135deg, #fff 70%, #e0e0e0 100%);
+
+.result-value {
   color: #6025E1;
+  font-size: 2rem;
+  font-weight: 700;
 }
-.cta-btn.cta-animated:focus {
-  outline: 2px solid #28D7A0;
-  outline-offset: 2px;
+
+.calculator-cta {
+  margin-top: 2.5rem;
 }
-.cta-btn, .cta-btn:visited, .cta-btn:active {
-  text-decoration: none !important;
+
+@media (max-width: 768px) {
+  .calculator-container {
+    padding: 1.5rem;
+  }
+  
+  .calculator-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .calculator-results {
+    grid-template-columns: 1fr;
+  }
+  
+  .result-value {
+    font-size: 1.5rem;
+  }
 }
 
 /* No animación para .cta-sticky */
 .cta-sticky, .cta-sticky:visited, .cta-sticky:active {
   text-decoration: none !important;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    padding: 2rem;
+  }
+
+  .navbar-menu.active {
+    right: 0;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .navbar-links a {
+    font-size: 1.2rem;
+  }
+
+  .hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  .cta-animated-wrapper {
+    margin-top: 2rem;
+  }
+}
+
+/* Eliminar estilos de .cta-sticky y animaciones de .cta-btn.cta-animated, .cta-animated-wrapper */
+.cta-animated-wrapper, .cta-btn.cta-animated, .cta-animated-wrapper:focus-within, .cta-animated-wrapper:hover, .cta-animated-wrapper:hover .cta-btn.cta-animated, .cta-btn.cta-animated:focus {
+  all: unset;
+}
+
+.cta-btn.cta-animated {
+  background: #6025E1;
+  color: #fff;
+  border-radius: 32px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 32px 0 #6025E144;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cta-btn.cta-animated:hover {
+  background: #7f53ff;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+#pain-points,
+#servicios,
+.testimonios,
+.demo-tecnologica,
+.proceso,
+.faq,
+.cta-agenda,
+.roi-calculator,
+footer {
+  background: #000 !important;
+}
+
+/* Roadmap vertical timeline */
+.roadmap {
+  background: linear-gradient(135deg, #0a001a 80%, #1a003a 100%);
+  padding: 6rem 2rem 2rem 2rem;
+  color: #fff;
+}
+.roadmap .wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.roadmap-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin: 3rem 0 0 0;
+}
+.roadmap-step {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 0.5rem;
+  z-index: 2;
+}
+.roadmap-icon {
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
+  border-radius: 50%;
+  background: rgba(156, 107, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 0 12px 2px #9c6bff44;
+  margin-right: 1.5rem;
+  margin-left: 4px;
+}
+.roadmap-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.roadmap-title {
+  font-weight: 600;
+  font-size: 1.18rem;
+  margin-bottom: 0.2rem;
+  color: #fff;
+}
+.roadmap-desc {
+  font-weight: 300;
+  color: #e0dfff;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.roadmap-line {
+  width: 4px;
+  height: 40px;
+  background: #9c6bff;
+  margin: 0 0 0 27px;
+  border-radius: 2px;
+  box-shadow: 0 0 12px 2px #9c6bff88;
+  align-self: flex-start;
+  z-index: 1;
+}
+@media (max-width: 600px) {
+  .roadmap .wrapper { max-width: 98vw; }
+  .roadmap-timeline { margin-left: 0; }
+  .roadmap-icon { margin-right: 1rem; }
 }

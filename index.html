@@ -25,19 +25,24 @@
   </script>
 </head>
 <body>
+  <!-- Fondo animado Vanta.js -->
   <nav class="navbar">
     <div class="navbar-logo">
       <img src="logo.png" alt="AdvantX Logo" height="56">
     </div>
-    <ul class="navbar-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#casos">Casos de éxito</a></li>
-      <li><a href="#demo">Demo</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#agenda">Agenda</a></li>
-    </ul>
-    <span class="cta-animated-wrapper"><a href="#agenda" class="cta-btn cta-animated">Contáctenos</a></span>
+    <button class="hamburger-menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-menu">
+      <ul class="navbar-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+      </ul>
+      <span class="cta-animated-wrapper"><a href="#agenda" class="cta-btn cta-animated">Contáctenos</a></span>
+    </div>
   </nav>
 
   <header id="inicio" class="hero-section">
@@ -53,6 +58,37 @@
       <span class="cta-animated-wrapper"><a href="#agenda" class="cta-btn cta-animated">Ver demo en vivo</a></span>
     </div>
   </header>
+
+  <section class="roadmap" id="roadmap">
+    <div class="wrapper">
+      <h2>Implementá IA en 3 pasos</h2>
+      <div class="roadmap-timeline">
+        <div class="roadmap-step">
+          <div class="roadmap-icon"><span aria-label="Diagnóstico" role="img">🔍</span></div>
+          <div class="roadmap-content">
+            <div class="roadmap-title">Diagnóstico</div>
+            <div class="roadmap-desc">Analizamos tus procesos, detectamos puntos de automatización.</div>
+          </div>
+        </div>
+        <div class="roadmap-line"></div>
+        <div class="roadmap-step">
+          <div class="roadmap-icon"><span aria-label="Implementación" role="img">⚙️</span></div>
+          <div class="roadmap-content">
+            <div class="roadmap-title">Implementación</div>
+            <div class="roadmap-desc">Creamos y conectamos tus flujos automáticos sin fricción.</div>
+          </div>
+        </div>
+        <div class="roadmap-line"></div>
+        <div class="roadmap-step">
+          <div class="roadmap-icon"><span aria-label="Escalado" role="img">📈</span></div>
+          <div class="roadmap-content">
+            <div class="roadmap-title">Escalado</div>
+            <div class="roadmap-desc">Medimos, optimizamos y multiplicamos el impacto de la IA.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="pain-points">
     <div class="wrapper">
@@ -90,22 +126,29 @@
           <h3>Soporte que vende</h3>
           <p>Agentes resuelven 85 % de dudas y upsells.</p>
         </article>
+        <!--
         <article class="card" data-aos="fade-up" data-aos-delay="400">
           <div class="icon" aria-label="Protección y pricing dinámico">
-            <!-- lock icon SVG -->
             <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="#6025E1" stroke-width="2"><rect x="5" y="11" width="14" height="8" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="15" r="1.5"/></svg>
           </div>
           <h3>Protección y pricing dinámico</h3>
           <p>Watermarking invisible y precios por valor.</p>
         </article>
+        -->
       </div>
-      <span class="cta-animated-wrapper"><a href="#demo" class="cta-btn cta-animated cta-pain">Quiero ver cómo funciona</a></span>
+      
       <div class="kpi-bar">
         <div class="kpi-card"><span class="kpi-num" data-count="120">+120 %</span> de ingresos por alumno</div>
         <div class="kpi-card"><span class="kpi-num" data-count="-40">-40 %</span> de CAC</div>
         <div class="kpi-card"><span class="kpi-num" data-count="35">+35 %</span> de LTV</div>
         <div class="kpi-card"><span class="kpi-num" data-count="0">24 h → 0 h</span> dedicadas a soporte repetitivo</div>
       </div>
+      
+      
+      <!--
+      <span class="cta-animated-wrapper"><a href="#demo" class="cta-btn cta-animated cta-pain">Quiero ver cómo funciona</a></span>
+      -->
+
     </div>
   </section>
 
@@ -127,6 +170,53 @@
     </div>
   </section>
 
+  <section id="roi-calculator" class="roi-calculator">
+    <div class="wrapper">
+      <h2>Calcula tu ROI con IA</h2>
+      <p class="subhead">Descubre cuánto puedes ahorrar automatizando tus procesos</p>
+      
+      <div class="calculator-container">
+        <div class="calculator-inputs">
+          <div class="input-group">
+            <label for="hours">Horas mensuales en tareas repetitivas</label>
+            <input type="number" id="hours" min="0" value="40" class="calculator-input">
+          </div>
+          
+          <div class="input-group">
+            <label for="cost">Costo por hora de tu equipo</label>
+            <input type="number" id="cost" min="0" value="25" class="calculator-input">
+          </div>
+          
+          <div class="input-group">
+            <label for="leads">Leads mensuales a procesar</label>
+            <input type="number" id="leads" min="0" value="100" class="calculator-input">
+          </div>
+        </div>
+
+        <div class="calculator-results">
+          <div class="result-card">
+            <h3>Ahorro mensual estimado</h3>
+            <div class="result-value" id="monthly-savings">$0</div>
+          </div>
+          
+          <div class="result-card">
+            <h3>Ahorro anual estimado</h3>
+            <div class="result-value" id="yearly-savings">$0</div>
+          </div>
+          
+          <div class="result-card">
+            <h3>ROI en 12 meses</h3>
+            <div class="result-value" id="roi">0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <!--
   <section id="casos" class="testimonios">
     <h2>Testimonios express</h2>
     <div class="testimonios-slider">
@@ -138,14 +228,14 @@
         <blockquote>"Pasamos de 18 % a 6 % de devoluciones en el lanzamiento."</blockquote>
         <cite>Lucas Ferreyra · CryptoPro</cite>
       </div>
-      <!-- Agregar más testimonios aquí -->
     </div>
   </section>
+  -->
 
+  <!--
   <section id="demo" class="demo-tecnologica">
     <h2>Demo Tecnológica</h2>
     <div class="demo-video">
-      <!-- Video loop corto mostrando dashboards y flujos IA -->
       <video autoplay loop muted playsinline poster="demo-poster.jpg">
         <source src="demo-loop.mp4" type="video/mp4">
       </video>
@@ -156,17 +246,12 @@
       <img src="mockup3.webp" alt="Dashboard IA 3">
     </div>
   </section>
+  -->
 
-  <section class="proceso">
-    <h2>Cómo funciona</h2>
-    <ol class="proceso-pasos">
-      <li><strong>Diagnóstico flash</strong> (15 min)</li>
-      <li><strong>Entrenamiento del modelo</strong> con tu contenido y buyer personas</li>
-      <li><strong>Deploy</strong> en tu stack de marketing y soporte</li>
-      <li><strong>Optimización continua</strong> basada en KPIs de conversión y retención</li>
-    </ol>
-  </section>
+ 
 
+
+  <!--
   <section id="faq" class="faq">
     <h2>Preguntas frecuentes</h2>
     <div class="faq-list">
@@ -178,9 +263,9 @@
         <button class="faq-question">¿Cómo se integra con mi stack?</button>
         <div class="faq-answer">Nos integramos con tus herramientas de marketing y soporte existentes, sin fricción.</div>
       </div>
-      <!-- Agregar más preguntas aquí -->
     </div>
   </section>
+  -->
 
   <section id="agenda" class="cta-agenda">
     <h2>Agenda tu demo gratuita</h2>
@@ -200,7 +285,8 @@
   </section>
 
   <button id="scrollTopBtn" aria-label="Volver arriba">↑</button>
-  <a href="#agenda" class="cta-sticky">Habla con un experto ahora</a>
+
+  </section>
 
   <footer>
     <div class="footer-links">
@@ -211,5 +297,23 @@
     <div class="footer-copy">&copy; 2024 AdvantX. Todos los derechos reservados.</div>
   </footer>
   <!-- Scripts de integración (Tidio, Calendly, etc.) se agregarán luego -->
+  <!-- Vanta.js WAVES fondo animado -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <script>
+    VANTA.FOG({
+      el: "body",
+      highlightColor: 0x6025e1,   // Violeta
+      midtoneColor: 0x000000,     // Negro
+      lowlightColor: 0x000000,    // Negro
+      baseColor: 0x000000,        // Fondo negro
+      blurFactor: 0.7,
+      speed: 1.2,
+      zoom: 1.2,
+      mouseControls: false,
+      touchControls: false,
+      gyroControls: false
+    })
+  </script>
 </body>
 </html>
