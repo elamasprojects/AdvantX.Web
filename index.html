@@ -320,5 +320,35 @@
       gyroControls: false
     })
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ROI Calculator
+      const calculatorInputs = document.querySelectorAll('.calculator-input');
+      const monthlySavings = document.getElementById('monthly-savings');
+      const yearlySavings = document.getElementById('yearly-savings');
+      const roiValue = document.getElementById('roi');
+
+      function calculateROI() {
+        const hours = parseFloat(document.getElementById('hours').value) || 0;
+        const cost = parseFloat(document.getElementById('cost').value) || 0;
+        const leads = parseFloat(document.getElementById('leads').value) || 0;
+        const timeReduction = 0.8;
+        const monthlyHoursSaved = hours * timeReduction;
+        const monthlyCostSaved = monthlyHoursSaved * cost;
+        const yearlyCostSaved = monthlyCostSaved * 12;
+        const initialInvestment = 1000;
+        const roi = ((yearlyCostSaved - initialInvestment) / initialInvestment) * 100;
+        monthlySavings.textContent = `$${Math.round(monthlyCostSaved)}`;
+        yearlySavings.textContent = `$${Math.round(yearlyCostSaved)}`;
+        roiValue.textContent = `${Math.round(roi)}%`;
+      }
+
+      calculatorInputs.forEach(input => {
+        input.addEventListener('input', calculateROI);
+      });
+
+      calculateROI();
+    });
+  </script>
 </body>
 </html>
