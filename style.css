@@ -264,11 +264,15 @@ button:hover, .cta-btn:hover, .cta-btn.cta-animated:hover {
   text-align: center;
 }
 .servicios-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.5rem;
   justify-content: center;
-  margin-top: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .servicio-card {
   background: #1a003a;
@@ -685,10 +689,6 @@ footer {
   }
 }
 
-
-
-
-
 /* Estilos básicos para la calculadora ROI */
 
 /* ROI Calculator */
@@ -793,11 +793,6 @@ footer {
   }
 }
 
-
-
-
-
-
 /* No animación para .cta-sticky */
 .cta-sticky, .cta-sticky:visited, .cta-sticky:active {
   text-decoration: none !important;
@@ -863,32 +858,6 @@ footer {
 .cta-animated-wrapper, .cta-btn.cta-animated, .cta-animated-wrapper:focus-within, .cta-animated-wrapper:hover, .cta-animated-wrapper:hover .cta-btn.cta-animated, .cta-btn.cta-animated:focus {
   all: unset;
 }
-
-/*
-
-.cta-btn.cta-animated {
-  background: #6025E1;
-  color: #fff;
-  border-radius: 32px;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 32px 0 #6025E144;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.cta-btn.cta-animated:hover {
-  background: #7f53ff;
-  color: #fff;
-  transform: scale(1.05);
-}
-
-*/
-
-
 
 #pain-points,
 #servicios,
@@ -998,4 +967,251 @@ footer {
   transform: scale(1.07);
   color: #fff;
   outline: none;
+}
+
+/* Neon Card Servicios AdvantX */
+.neon-card {
+  background: rgba(10, 10, 10, 0.92);
+  border-radius: 18px;
+  border: 2px solid #A259FF;
+  box-shadow: 0 0 24px 2px #A259FF88, 0 4px 32px 0 #000;
+  padding: 2.2rem 2.5rem 2rem 2.5rem;
+  position: relative;
+  transition: box-shadow 0.25s, transform 0.2s;
+  color: #fff;
+  max-width: 650px;
+  width: 100%;
+  justify-self: center;
+}
+
+.neon-card:hover, .neon-card:focus {
+  box-shadow: 0 0 32px 6px #A259FFcc, 0 8px 40px 0 #000;
+  transform: translateY(-6px) scale(1.03);
+}
+
+.servicio-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 1.1rem;
+}
+
+.servicio-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+  margin-bottom: 0;
+}
+
+.servicio-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+.servicio-desc {
+  font-size: 1.05rem;
+  color: #fff;
+  opacity: 0.92;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+@media (max-width: 700px) {
+  .servicios-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1400px) {
+  .servicios-cards {
+    max-width: 98vw;
+  }
+  .neon-card {
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .servicios-cards {
+    grid-template-columns: 1fr;
+    max-width: 98vw;
+  }
+  .neon-card {
+    max-width: 98vw;
+  }
+}
+
+/* SOBRE NOSOTROS */
+.sobre-nosotros {
+  padding: 6rem 2rem 2rem 2rem;
+  background: linear-gradient(180deg, #000 60%, #181828 100%);
+  text-align: center;
+}
+.sobre-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: rgba(20, 20, 20, 0.95);
+  border: 2px solid #A259FF;
+  border-radius: 2em;
+  padding: 0.35em 1.3em 0.35em 1.1em;
+  box-shadow: 0 0 12px 2px #A259FF55;
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  margin-bottom: 2.2rem;
+  color: #A259FF;
+  font-weight: 700;
+  font-size: 1.13rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-left: 0;
+  margin-right: 0;
+}
+.sobre-pill-icon svg {
+  display: block;
+  vertical-align: middle;
+}
+.sobre-cards {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+.sobre-card {
+  background: #23232b;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px 0 #00000055;
+  width: 340px;
+  max-width: 98vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.sobre-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: linear-gradient(180deg, #fff 60%, #eaeaea 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sobre-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px 24px 0 0;
+  background: #fff;
+}
+.sobre-info {
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: #23232b;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+.sobre-nombre {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.sobre-rol {
+  font-size: 1.05rem;
+  color: #bdbaff;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+.sobre-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  background: #0A66C2;
+  border-radius: 8px;
+  padding: 0.3em 0.6em;
+  box-shadow: 0 2px 12px 0 #0A66C244;
+  transition: box-shadow 0.2s, transform 0.2s;
+  margin-top: auto;
+  text-decoration: none;
+}
+.sobre-linkedin:hover {
+  box-shadow: 0 4px 24px 0 #0A66C288;
+  transform: scale(1.07);
+}
+.sobre-linkedin svg {
+  display: block;
+}
+@media (max-width: 900px) {
+  .sobre-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .sobre-card {
+    width: 98vw;
+    max-width: 400px;
+  }
+}
+
+.roadmap > .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* DEMO CALL CAL.COM */
+.demo-call {
+  padding: 6rem 2rem 2rem 2rem;
+  background: #000 !important;
+  text-align: center;
+}
+.demo-call-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+.demo-call .sobre-pill {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.2rem;
+}
+.calcom-iframe-container {
+  width: 100%;
+  background: #181828;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px 0 #A259FF33;
+  overflow: hidden;
+  padding: 0;
+}
+.calcom-iframe-container iframe {
+  width: 100%;
+  min-height: 600px;
+  border: none;
+  background: #181828;
+  border-radius: 20px;
+  display: block;
+}
+@media (max-width: 700px) {
+  .demo-call-wrapper {
+    max-width: 98vw;
+    gap: 1.5rem;
+  }
+  .calcom-iframe-container iframe {
+    min-height: 480px;
+    border-radius: 14px;
+  }
 }
