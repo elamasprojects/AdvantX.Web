@@ -322,6 +322,24 @@
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu functionality
+      const hamburgerMenu = document.querySelector('.hamburger-menu');
+      const navbarMenu = document.querySelector('.navbar-menu');
+      
+      hamburgerMenu.addEventListener('click', function() {
+        hamburgerMenu.classList.toggle('active');
+        navbarMenu.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link
+      const navbarLinks = document.querySelectorAll('.navbar-links a');
+      navbarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburgerMenu.classList.remove('active');
+          navbarMenu.classList.remove('active');
+        });
+      });
+
       // ROI Calculator
       const calculatorInputs = document.querySelectorAll('.calculator-input');
       const monthlySavings = document.getElementById('monthly-savings');
