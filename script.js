@@ -146,11 +146,12 @@ const roiValue = document.getElementById('roi');
 function calculateROI() {
   const hours = parseFloat(document.getElementById('hours').value) || 0;
   const cost = parseFloat(document.getElementById('cost').value) || 0;
-  const leads = parseFloat(document.getElementById('leads').value) || 0;
-  
+  const teamSize = parseFloat(document.getElementById('team-size').value) || 0;
+
   // Asumimos que la IA reduce el tiempo en un 80%
   const timeReduction = 0.8;
-  const monthlyHoursSaved = hours * timeReduction;
+  const monthlyHoursSavedPerEmployee = hours * timeReduction;
+  const monthlyHoursSaved = monthlyHoursSavedPerEmployee * teamSize;
   const monthlyCostSaved = monthlyHoursSaved * cost;
   const yearlyCostSaved = monthlyCostSaved * 12;
   
