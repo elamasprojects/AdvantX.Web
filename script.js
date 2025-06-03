@@ -9,16 +9,15 @@ faqItems.forEach(item => {
 
 // Botón volver arriba
 const scrollTopBtn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollTopBtn.style.display = 'block';
-  } else {
-    scrollTopBtn.style.display = 'none';
-  }
-});
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (scrollTopBtn) {
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // Placeholder animación de conteo (puedes personalizar luego)
 // Ejemplo: contar horas ahorradas
