@@ -58,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 2.5rem;
+  padding-top: 1.2rem;
   z-index: 1000;
   box-shadow: none;
   height: 64px;
@@ -74,6 +75,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  padding-left: 38px;
+  padding-right: 38px;
 }
 .navbar-logo img {
   height: 56px;
@@ -87,28 +90,47 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.01em;
   margin-top: 0.2rem;
 }
-.navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-  margin: 0 auto;
-  padding: 0;
+.navbar-menu {
   flex: 1;
+  display: flex;
   justify-content: center;
+  align-items: center;
+}
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.2rem;
+  background: rgba(24, 18, 56, 0.45);
+  border: 1.5px solid #3d2b6b;
+  border-radius: 2rem;
+  box-shadow: 0 2px 16px 0 #A259FF22;
+  padding: 0.3rem 2.5rem;
+  margin: 0 auto;
+  height: 44px;
+}
+.navbar-links li {
+  display: flex;
+  align-items: center;
 }
 .navbar-links a {
   color: #fff;
   text-decoration: none;
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.08rem;
-  transition: color 0.2s;
-  padding: 2px 0;
-  border-bottom: 2px solid transparent;
+  padding: 0 0.7rem;
+  border-bottom: none;
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
 }
 .navbar-links a:hover, .navbar-links a:focus {
-  color: #6025E1;
-  border-bottom: 2px solid #6025E1;
+  color: #A259FF;
+  opacity: 0.6;
+  background: none;
 }
 
 .hamburger-menu {
@@ -139,12 +161,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .hamburger-menu.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
-}
-
-.navbar-menu {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
 }
 
 .hero-section {
@@ -187,34 +203,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
 }
 button, .cta-btn, .cta-btn.cta-animated {
-  background: #fff;
-  color: #181828;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  border: none;
-  border-radius: 32px;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 32px 0 #6025E122;
-  transition: 0.3s cubic-bezier(.77,0,.18,1), color 0.2s, transform 0.2s;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  user-select: none;
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
-button:hover, .cta-btn:hover, .cta-btn.cta-animated:hover {
-  background: linear-gradient(90deg, #fff 70%, #a084ee 100%);
-  color: #181828;
-  transform: scale(1.05);
-}
-
-.cta-btn span, .cta-btn.cta-animated span {
-  user-select: none;
-  pointer-events: none;
+.btn-violeta {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .problema-solucion {
@@ -946,27 +945,10 @@ footer {
 }
 
 .btn-violeta {
-  background: linear-gradient(90deg, #6025E1 80%, #a084ee 100%);
-  color: #fff;
-  border: none;
-  border-radius: 32px;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 24px 0 #6025E144;
-  transition: 0.3s cubic-bezier(.77,0,.18,1), box-shadow 0.3s, transform 0.2s;
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-.btn-violeta:hover, .btn-violeta:focus {
-  background: linear-gradient(90deg, #a084ee 0%, #6025E1 100%);
-  box-shadow: 0 8px 32px 0 #a084ee88;
-  transform: scale(1.07);
-  color: #fff;
-  outline: none;
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 /* Neon Card Servicios AdvantX */
@@ -1159,8 +1141,26 @@ footer {
     gap: 2rem;
   }
   .sobre-card {
-    width: 98vw;
+    width: 75vw;
     max-width: 400px;
+  }
+  .sobre-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+  .sobre-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sobre-info {
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  }
+  .sobre-nombre {
+    font-size: 1.2rem;
+  }
+  .sobre-rol {
+    font-size: 0.95rem;
   }
 }
 
@@ -1214,4 +1214,108 @@ footer {
     min-height: 480px;
     border-radius: 14px;
   }
+}
+
+#btn-start-trial {
+  background: linear-gradient(135deg, #a259ff 0%, #6025e1 60%, #181828 100%);
+  color: #fff;
+  border: 1.5px solid #a084ee;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 0.7rem 2.2rem;
+  box-shadow: 0 2px 16px 0 #A259FF33;
+  margin-left: 1.2rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+#btn-start-trial:hover, #btn-start-trial:focus {
+  background: linear-gradient(135deg, #6025e1 0%, #a259ff 80%, #181828 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px 0 #A259FF66;
+}
+
+#my-cal-inline {
+  overflow: hidden !important;
+}
+#my-cal-inline * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+#my-cal-inline ::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Nuevo estilo de botón */
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 1.08rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
