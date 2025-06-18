@@ -203,3 +203,24 @@ window.addEventListener('scroll', () => {
     navbar.classList.remove('navbar-scrolled');
   }
 });
+
+// FAQs accordion smooth
+const faqsAccordion = document.querySelector('.faqs-accordion');
+if (faqsAccordion) {
+  faqsAccordion.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.parentElement;
+      const isActive = item.classList.contains('active');
+      // Cerrar todos
+      faqsAccordion.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      // Abrir si no estaba activo
+      if (!isActive) {
+        item.classList.add('active');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
