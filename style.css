@@ -707,7 +707,7 @@ footer {
   border-radius: 24px;
   padding: 2.5rem;
   margin: 2rem auto;
-  box-shadow: 0 4px 32px 0 #6025E122;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .calculator-inputs {
@@ -1042,7 +1042,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  background: rgba(20, 20, 20, 0.95);
+  background: #000 !important;
   border: 2px solid #A259FF;
   border-radius: 2em;
   padding: 0.35em 1.3em 0.35em 1.1em;
@@ -1177,12 +1177,14 @@ footer {
   text-align: center;
 }
 .demo-call-wrapper {
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .demo-call .sobre-pill {
   margin-left: auto;
@@ -1191,9 +1193,9 @@ footer {
 }
 .calcom-iframe-container {
   width: 100%;
-  background: #181828;
+  background: #000000;
   border-radius: 20px;
-  box-shadow: 0 8px 40px 0 #A259FF33;
+  /* box-shadow: 0 8px 40px 0 #A259FF33; */
   overflow: hidden;
   padding: 0;
 }
@@ -1201,13 +1203,15 @@ footer {
   width: 100%;
   min-height: 600px;
   border: none;
-  background: #181828;
+  background: #000000;
   border-radius: 20px;
   display: block;
 }
 @media (max-width: 700px) {
   .demo-call-wrapper {
     max-width: 98vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     gap: 1.5rem;
   }
   .calcom-iframe-container iframe {
